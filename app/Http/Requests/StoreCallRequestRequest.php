@@ -9,20 +9,17 @@ class StoreCallRequestRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true; // Ubah sesuai dengan kebutuhan otorisasi
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'id_device' => 'required|string|max:255',
+            'button_type' => 'required|string|max:255',
+            'status' => 'required|string|in:ON,OFF',
         ];
     }
 }
